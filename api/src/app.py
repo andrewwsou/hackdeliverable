@@ -19,7 +19,7 @@ database: JSONDatabase[list[Quote]] = JSONDatabase("data/database.json")
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+async def lifespan(app: FastAPI) -> AsyncIterator[None]: # initializes database
     """Handle database management when running app."""
     if "quotes" not in database:
         print("Adding quotes entry to database")
@@ -34,7 +34,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 @app.post("/quote")
-def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
+def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse: # adds quotes to database
     """
     Process a user submitting a new quote.
     You should not modify this function except for the return value.
@@ -42,9 +42,12 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
     now = datetime.now()
     quote = Quote(name=name, message=message, time=now.isoformat(timespec="seconds"))
     database["quotes"].append(quote)
-
+    
     # You may modify the return value as needed to support other functionality
     return RedirectResponse("/", status.HTTP_303_SEE_OTHER)
 
 
 # TODO: add another API route with a query parameter to retrieve quotes based on max age
+@app.get("/quote")
+def get_quotes():
+    return {"quotes": database["quotes"]}
