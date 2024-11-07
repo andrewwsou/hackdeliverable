@@ -1,5 +1,5 @@
 from contextlib import asynccontextmanager
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import AsyncIterator
 
 from fastapi import FastAPI, Form, status
@@ -7,6 +7,7 @@ from fastapi.responses import RedirectResponse
 from typing_extensions import TypedDict
 
 from services.database import JSONDatabase
+import json
 
 
 class Quote(TypedDict):
@@ -49,5 +50,31 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
 
 # TODO: add another API route with a query parameter to retrieve quotes based on max age
 @app.get("/quote")
-def get_quotes():
-    return {"quotes": database["quotes"]}
+def get_quotes(limit: str):
+    current_date = datetime.now()
+    week_ago = current_date - timedelta(weeks = 1)
+    month_ago = current_date - timedelta(days = 31)
+    year_ago = current_date - timedelta(days = 365)
+    formatted_current = current_date.isoformat(timespec="seconds")
+    print("Current date:", current_date)
+    print("Week ago:", week_ago)
+    print("Month ago:", month_ago)
+    print("Year ago:", year_ago)
+    #quotes = JSONDatabase("data/database.json")
+    with open("data/database.json", "r") as f:
+        data = json.load(f)
+    quotes = data["quotes"] 
+    if limit == "Last Week":
+        json_data = [x for x in quotes if datetime.fromisoformat(x["time"]) >= week_ago]
+        return json_data
+    elif limit == "Month":
+        json_data = [x for x in quotes if datetime.fromisoformat(x["time"]) >= month_ago]
+        return json_data
+    elif limit == "Year":
+        json_data = [x for x in quotes if datetime.fromisoformat(x["time"]) >= year_ago]
+        print(f"Filtered {limit} quotes: {len(json_data)} quotes found")
+        return {"quotes": json_data}    
+    else:
+        return {"quotes": database["quotes"]}
+
+    # return {"quotes": database["quotes"]}
