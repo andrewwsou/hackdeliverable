@@ -66,11 +66,14 @@ function App() {
 
 		<h2>Filter Quotes</h2>
 		<div>
-			<button onClick={() => handleLimitClick("Last Week")}>Last Week</button>
-			<button onClick={() => handleLimitClick("Month")}>Last Month</button>
-			<button onClick={() => handleLimitClick("Year")}>Last Year</button>
-			<button onClick={() => handleLimitClick("All")}>All</button>
+			<select value={selectedLimit} onChange={(e) => handleLimitClick(e.target.value)}>
+				<option value="Last Week">Last Week</option>
+				<option value="Month">Last Month</option>
+				<option value="Year">Last Year</option>
+				<option value="All">All</option>
+			</select>
 		</div>
+
 
 		<h2>Previous Quotes</h2>
 		<div className="messages">
