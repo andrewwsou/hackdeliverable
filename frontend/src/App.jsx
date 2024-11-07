@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Quote from "./Quote";
 
 function App() {
   const [quotes, setQuotes] = useState([]); // set the quotes to quotes
@@ -74,9 +75,7 @@ function App() {
 		<h2>Previous Quotes</h2>
 		<div className="messages">
 		{quotes.map((quote, index) => (
-			<div key={index}>
-			<p><span className="time">{quote.time}</span> <span className="highlight">{quote.name}</span>: {quote.message}</p>
-			</div>
+          <Quote key={index} quote={quote} />
 		))}
 		</div>
 	</div>
