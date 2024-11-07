@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 function App() {
-  const [quotes, setQuotes] = useState([]);
-  const [selectedLimit, setSelectedLimit] = useState("All");
+  const [quotes, setQuotes] = useState([]); // set the quotes to quotes
+  const [selectedLimit, setSelectedLimit] = useState("All"); // set default state of quotes displayed to all
 
-  const fetchQuotes = async (limit) => {
+  const fetchQuotes = async (limit) => { // get quotes from database using api endpoint to display
     try {
       const response = await fetch(`/api/quote?limit=${limit}`);
       if (response.ok) {
@@ -16,15 +16,36 @@ function App() {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { // actually fetch the quotes of the selected limiter
     fetchQuotes(selectedLimit);
   }, [selectedLimit]);
 
-  const handleLimitClick = (limit) => {
+  const handleLimitClick = (limit) => { // determine which limiter is selected
     setSelectedLimit(limit);
   };
-//   const handleSubmit = async = (event) => {
-//     event.preventDefault();
+  const handleSubmit = async (event) => { // prevent page reload when submitting data but still display new quotes
+    event.preventDefault();
+
+    const form = event.target;
+    const name = form.name.value;
+    const message = form.message.value;
+
+    try {
+      const response = await fetch("/api/quote", { // post quote into database using api endpoint
+        method: "POST",
+        body: new URLSearchParams({
+          name,
+          message,
+        }),
+      });
+      if (response.ok) {
+        fetchQuotes(selectedLimit);
+      }
+    } catch (error) {
+      console.error("Error submitting quote:", error);
+    }
+    form.reset();
+  };
 	
 
   return (
@@ -34,7 +55,7 @@ function App() {
 
 		<h2>Submit a quote</h2>
 		{/* TODO: implement custom for submission logic to not refresh the page */}
-		<form method="post" action="/api/quote">
+		<form onSubmit={handleSubmit}>
 		<label htmlFor="input-name">Name</label>
 		<input type="text" name="name" id="input-name" required />
 		<label htmlFor="input-message">Quote</label>
