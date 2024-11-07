@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [quotes, setQuotes] = useState([]);
+  const [selectedLimit, setSelectedLimit] = useState("All");
 
-  // Fetch quotes function
-  const fetchQuotes = async () => {
+  const fetchQuotes = async (limit) => {
     try {
-      const response = await fetch("/api/quote?limit=All");
+      const response = await fetch(`/api/quote?limit=${limit}`);
       if (response.ok) {
         const data = await response.json();
-        setQuotes(data.quotes); // Update quotes state
+        setQuotes(data.quotes);
       }
     } catch (error) {
       console.error("Error fetching quotes:", error);
@@ -17,9 +17,12 @@ function App() {
   };
 
   useEffect(() => {
-    fetchQuotes();
-  }, []);
+    fetchQuotes(selectedLimit);
+  }, [selectedLimit]);
 
+  const handleLimitClick = (limit) => {
+    setSelectedLimit(limit);
+  };
 //   const handleSubmit = async = (event) => {
 //     event.preventDefault();
 	
@@ -38,6 +41,14 @@ function App() {
 		<input type="text" name="message" id="input-message" required />
 		<button type="submit">Submit</button>
 		</form>
+
+		<h2>Filter Quotes</h2>
+		<div>
+			<button onClick={() => handleLimitClick("Last Week")}>Last Week</button>
+			<button onClick={() => handleLimitClick("Month")}>Last Month</button>
+			<button onClick={() => handleLimitClick("Year")}>Last Year</button>
+			<button onClick={() => handleLimitClick("All")}>All</button>
+		</div>
 
 		<h2>Previous Quotes</h2>
 		<div className="messages">
