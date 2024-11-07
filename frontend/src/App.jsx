@@ -54,7 +54,7 @@ function App() {
 		<div className="messages">
 		{quotes.map((quote, index) => (
 			<div key={index}>
-			<p><span className="highlight">{quote.name}</span>: {quote.message}</p>
+			<p><span className="time">{quote.time}</span> <span className="highlight">{quote.name}</span>: {quote.message}</p>
 			</div>
 		))}
 		</div>
