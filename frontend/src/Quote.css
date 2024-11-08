@@ -2,16 +2,19 @@
     color: #ffffffb9;
     margin-right: 10px;
     font-size: medium;
+    font-style: italic;
 }
 
 .name {
     font-size: large;
     color: #75ac9d;
+    font-family: sans-serif;
 }
 
 .message {
     font-size: large;
     color: #ffffff;
+    font-family: sans-serif;
 }
 
 .quote-container {
@@ -24,7 +27,6 @@
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     color: #ddd;
-    font-style: italic;
     font-size: 1.1rem;
     line-height: 1.6;
 }
