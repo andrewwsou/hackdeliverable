@@ -71,7 +71,7 @@ function App() {
 		<button type="submit">Submit</button>
 		</form>
 
-		<h2>Filter Quotes</h2>
+		<h2>Quotes</h2>
 		<div>
 			<select value={selectedLimit} onChange={(e) => handleLimitClick(e.target.value)}>
 				<option value="Last Week">Last Week</option>
@@ -82,7 +82,7 @@ function App() {
 		</div>
 
 
-		<div className="messages">
+		<div className="messages" key={selectedLimit}>
 		{quotes.map((quote, index) => (
           <Quote key={index} quote={quote} />
 		))}

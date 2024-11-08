@@ -44,7 +44,7 @@ input, button {
 }
 
 button[type="submit"] {
-    background-color: #0077b5;
+    background-color: #506C64;
     color: #dacece;
     font-weight: bold;
     border: none;
@@ -52,7 +52,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #357abd;
+    background-color: #506C64;
 }
 
 .form-label {
@@ -88,5 +88,5 @@ input[type="text"] {
 
 input[type="text"]:focus {
     outline: none;
-    border: 1px solid #357abd;
+    border: 1px solid #506C64;
 }

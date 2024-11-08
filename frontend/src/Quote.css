@@ -1,0 +1,38 @@
+.time {
+    color: #ffffffb9;
+    margin-right: 10px;
+    font-size: medium;
+}
+
+.name {
+    font-size: large;
+    color: #75ac9d;
+}
+
+.message {
+    font-size: large;
+    color: #ffffff;
+}
+
+.quote-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 15px auto;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-left: 4px solid #506C64;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    color: #ddd;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.messages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 40px;
+    max-width: 1400px;
+    margin: 30px;
+}
