@@ -21,7 +21,7 @@
     color: #C0BCB5;
     font-size: 4rem;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
   
   .App h2:nth-of-type(1) {
@@ -32,8 +32,8 @@
   
   .App h2:nth-of-type(2) {
     color: #506C64;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 2rem;
+    margin-top: 40px;
   }  
 
 form {
@@ -101,3 +101,13 @@ input[type="text"]:focus {
     outline: none;
     border: 1px solid #506C64;
 }
+
+  .dropdownMenu select {
+    padding: 4px 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    background-color: #C0BCB5;
+    outline: #506C64;
+  }
+
+  

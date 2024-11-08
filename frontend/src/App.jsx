@@ -70,9 +70,9 @@ function App() {
 		<input type="text" name="message" id="input-message" required />
 		<button type="submit">Submit</button>
 		</form>
-
+		
 		<h2>Quotes</h2>
-		<div>
+		<div className="dropdownMenu">
 			<select value={selectedLimit} onChange={(e) => handleLimitClick(e.target.value)}>
 				<option value="Last Week">Last Week</option>
 				<option value="Month">Last Month</option>
