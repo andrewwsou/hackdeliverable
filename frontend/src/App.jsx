@@ -78,7 +78,7 @@ function App() {
 			</select>
 		</div>
 
-		<div className="messages" key={selectedLimit}>
+		<div className="messages">
 		{quotes.map((quote, index) => (
           <Quote key={index} quote={quote} />
 		))}
