@@ -12,18 +12,29 @@
 .logo-container {
     margin: 10px;
     display: flex;
-    background-color: #ffffff;
+    background-color: #506C64;
     padding: 10px;
     border-radius: 50%;
 }
 
-.AppTitle {
-    font-size: 2rem;
-    color: #b3acac;
+.AppTitle h1 {
+    color: #C0BCB5;
+    font-size: 4rem;
     text-align: center;
-    font-weight: 400;
-    margin-top: -10px;
-}
+    margin-bottom: 20px;
+  }
+  
+  .App h2:nth-of-type(1) {
+    color: #506C64; 
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .App h2:nth-of-type(2) {
+    color: #506C64;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }  
 
 form {
     display: flex;
@@ -56,7 +67,7 @@ button[type="submit"]:hover {
 }
 
 .form-label {
-    color: #ddd;
+    color: #C0BCB5;
     font-weight: bold;
 }
 
