@@ -64,9 +64,9 @@ function App() {
 		<h2>Submit a quote</h2>
 		{/* TODO: implement custom for submission logic to not refresh the page */}
 		<form onSubmit={handleSubmit}>
-		<label htmlFor="input-name">Name</label>
+		<label htmlFor="input-name" className="form-label">Name</label>
 		<input type="text" name="name" id="input-name" required />
-		<label htmlFor="input-message">Quote</label>
+		<label htmlFor="input-message" className="form-label">Quote</label>
 		<input type="text" name="message" id="input-message" required />
 		<button type="submit">Submit</button>
 		</form>
@@ -82,7 +82,6 @@ function App() {
 		</div>
 
 
-		<h2>Previous Quotes</h2>
 		<div className="messages">
 		{quotes.map((quote, index) => (
           <Quote key={index} quote={quote} />
