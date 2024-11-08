@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Quote from "./Quote";
+import "./App.css";
+import { quotebooklogo } from "../Assets";
 
 function App() {
   const [quotes, setQuotes] = useState([]); // set the quotes to quotes
@@ -52,8 +54,13 @@ function App() {
   return (
     <div className="App">
 		{/* TODO: include an icon for the quote book */}
+		<div className="logo-container">
+        <img src={quotebooklogo} alt="Quote Book Logo" className="quote-logo" />
+      </div>
+	
+	<div className="AppTitle">
 		<h1>Hack at UCI Tech Deliverable</h1>
-
+	</div>
 		<h2>Submit a quote</h2>
 		{/* TODO: implement custom for submission logic to not refresh the page */}
 		<form onSubmit={handleSubmit}>
